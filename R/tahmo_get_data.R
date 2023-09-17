@@ -4,7 +4,7 @@ get.tahmo.data <- function(aws_dir, adt_dir){
     origin <- "1970-01-01"
     tahmo_time <- "%Y-%m-%dT%H:%M:%SZ"
     last_format <- "%Y%m%d%H%M%S"
-    awsNET <- 1
+    awsNET <- 2
 
     dirOUT <- file.path(adt_dir, "AWS_DATA", "DATA", "minutes", "TAHMO")
     if(!dir.exists(dirOUT))

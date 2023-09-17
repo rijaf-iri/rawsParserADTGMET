@@ -13,4 +13,5 @@ Imports:
     httr,
     DBI,
     RMySQL,
+    RPostgres
 RoxygenNote: 7.2.3
