@@ -44,6 +44,7 @@ get.tahmo.api <- function(aws_dir, adt_dir){
             # init_time <- "20230901000000"
             ## last 5 days (comment at 1st run)
             init_time <- format(Sys.time() - 5 * 24 * 3600, last_format)
+            ####
             last <- as.POSIXct(init_time, format = last_format, tz = tz)
         }else{
             last <- as.POSIXct(awsLast$last[ilst], format = last_format, tz = tz) + 1

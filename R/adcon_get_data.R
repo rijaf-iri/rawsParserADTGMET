@@ -7,7 +7,6 @@ get.adcon.data <- function(aws_dir, adt_dir){
     tz <- "Africa/Accra"
     Sys.setenv(TZ = tz)
     origin <- "1970-01-01"
-    init_time <- "20230801000000"
     last_format <- "%Y%m%d%H%M%S"
     awsNET <- 1
 
@@ -70,9 +69,16 @@ get.adcon.data <- function(aws_dir, adt_dir){
         }
 
         if(is.na(awsLast$last[ilst])){
+            # init_time <- "20230801000000"
+            ## last 5 days (comment at 1st run)
+            init_time <- format(Sys.time() - 5 * 24 * 3600, last_format)
+            ##
             last <- as.POSIXct(init_time, format = last_format, tz = tz)
         }else{
             last <- as.POSIXct(awsLast$last[ilst], format = last_format, tz = tz)
+            ## last 5 days (comment at 1st run)
+            last5d <- Sys.time() - 5 * 24 * 3600
+            if(last < last5d) last <- last5d
         }
 
         daty <- seq(last, Sys.time(), 'month')
