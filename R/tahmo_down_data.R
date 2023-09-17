@@ -49,8 +49,8 @@ get.tahmo.api <- function(aws_dir, adt_dir){
         }else{
             last <- as.POSIXct(awsLast$last[ilst], format = last_format, tz = tz) + 1
             ## last 5 days (comment at 1st run)
-            # last5d <- Sys.time() - 5 * 24 * 3600
-            # if(last < last5d) last <- last5d
+            last5d <- Sys.time() - 5 * 24 * 3600
+            if(last < last5d) last <- last5d
         }
         daty <- seq(last, Sys.time(), 'day')
         daty <- time_local2utc_time(daty)
